@@ -1,4 +1,4 @@
-# Argentum Online - Organizacion oficial de github.
+# Argentum Online - Organizacion oficial.
 Aqui encontraras todos los recursos, codigos y herramientas necesarias para crear tu propio AO.
 Todos estan invitados a hacer Pull Request para agregar contenido.
 

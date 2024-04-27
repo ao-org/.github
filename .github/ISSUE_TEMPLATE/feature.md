@@ -1,6 +1,6 @@
 ---
 name: Funcionalidad
-about: Enviarnos los pasos para reproducir un bug.
+about: Proponer nueva funcionalidad dentro del juego
 title: "[FEATURE] - Titulo de la funcionalidad"
 labels: feature
 assignees: morgolock, RecoX, reyarb
@@ -9,7 +9,7 @@ assignees: morgolock, RecoX, reyarb
 
 ---
 name: Feature
-about: Nueva funcionalidad a agregar
+about: Propose a new functionality within the game
 title: "[FEATURE] - Title of the feature"
 labels: feature
 assignees: morgolock, RecoX, reyarb

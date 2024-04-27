@@ -1,3 +1,20 @@
+---
+name: Funcionalidad
+about: Enviarnos los pasos para reproducir un bug.
+title: "[FEATURE] - Titulo de la funcionalidad"
+labels: feature
+assignees: morgolock, RecoX, reyarb
+
+---
+
+---
+name: Feature
+about: Nueva funcionalidad a agregar
+title: "[FEATURE] - Title of the feature"
+labels: feature
+assignees: morgolock, RecoX, reyarb
+---
+
 # Título de la Funcionalidad
 
 ## Resumen

@@ -1,4 +1,4 @@
-name: Auto-generate PR using Aider
+name: Aider on Issue Labeled
 
 on:
   workflow_call:
@@ -20,10 +20,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Generate Pull Request
-        uses: mirrajabi/aider-github-workflows/.github/workflows/aider-issue-to-pr.yml@main
+      - uses: mirrajabi/aider-github-workflows/.github/workflows/aider-issue-to-pr.yml@main
         with:
           issue-number: ${{ inputs.issue-number }}
           base-branch: ${{ inputs.base-branch }}
-          model: anthropic/claude-3-sonnet-20240229
-        env: 
-          ANTHROPIC_API_KEY: ${{ secrets.anthropic_api_key }}
+        secrets:
+          anthropic_api_key: ${{ secrets.anthropic_api_key }}

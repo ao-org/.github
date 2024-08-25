@@ -4,24 +4,26 @@ on:
   workflow_call:
     inputs:
       issue-number:
+        description: 'The issue number to generate the PR from'
         required: true
         type: number
       base-branch:
+        description: 'The base branch to open the PR against'
         required: true
         type: string
     secrets:
-      required:
-        - anthropic_api_key
+      anthropic_api_key:
+        required: true
 
 jobs:
   generate:
-    name: Generate PR
     runs-on: ubuntu-latest
     steps:
-      - uses: mirrajabi/aider-github-workflows/.github/workflows/aider-issue-to-pr.yml@main
+      - name: Generate Pull Request
+        uses: mirrajabi/aider-github-workflows/.github/workflows/aider-issue-to-pr.yml@main
         with:
           issue-number: ${{ inputs.issue-number }}
           base-branch: ${{ inputs.base-branch }}
           model: anthropic/claude-3-sonnet-20240229
-        secrets: 
-          anthropic_api_key: ${{ secrets.anthropic_api_key }}
+        env: 
+          ANTHROPIC_API_KEY: ${{ secrets.anthropic_api_key }}

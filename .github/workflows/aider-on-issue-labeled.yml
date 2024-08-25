@@ -1,7 +1,7 @@
 name: Auto-generate PR using Aider
 
 on:
-  workflow_call: 
+  workflow_call:
     inputs:
       issue-number:
         required: true
@@ -15,10 +15,13 @@ on:
 
 jobs:
   generate:
-    uses: mirrajabi/aider-github-workflows/.github/workflows/aider-issue-to-pr.yml@main
-    with:
-      issue-number: ${{ inputs['issue-number'] }}
-      base-branch: ${{ inputs['base-branch'] }}
-      model: anthropic/claude-3-sonnet-20240229
-    secrets: 
-      anthropic_api_key: ${{ secrets.anthropic_api_key }}
+    name: Generate PR
+    runs-on: ubuntu-latest
+    steps:
+      - uses: mirrajabi/aider-github-workflows/.github/workflows/aider-issue-to-pr.yml@main
+        with:
+          issue-number: ${{ inputs.issue-number }}
+          base-branch: ${{ inputs.base-branch }}
+          model: anthropic/claude-3-sonnet-20240229
+        secrets: 
+          anthropic_api_key: ${{ secrets.anthropic_api_key }}

@@ -5,6 +5,8 @@ on:
     secrets:
       DEEPSEEK_API_KEY:
         required: true
+      PAT_TOKEN:
+        required: true
       JENKINS_USER:
         required: true
       JENKINS_TOKEN:
@@ -37,21 +39,22 @@ jobs:
 
       - name: Checkout repo
         if: steps.retry-check.outputs.skip != 'true'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: ${{ github.event.branches[0].name }}
 
       - name: Checkout scripts
         if: steps.retry-check.outputs.skip != 'true'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: ao-org/argentum-online-assets
+          token: ${{ secrets.PAT_TOKEN }}
           path: _assets
           sparse-checkout: tools/ai_auto_pr_fix/scripts
 
       - name: Setup Node.js
         if: steps.retry-check.outputs.skip != 'true'
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: '20'
 

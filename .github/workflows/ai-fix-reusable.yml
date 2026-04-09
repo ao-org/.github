@@ -3,7 +3,7 @@ name: AI Fix Issue (Reusable)
 on:
   workflow_call:
     secrets:
-      DEEPSEEK_API_KEY:
+      ANTHROPIC_API_KEY:
         required: true
       PAT_TOKEN:
         required: true
@@ -35,7 +35,7 @@ jobs:
 
       - name: Run AI fix
         env:
-          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           ISSUE_TITLE: ${{ github.event.issue.title }}
           ISSUE_BODY: ${{ github.event.issue.body }}
         run: node _assets/tools/ai_auto_pr_fix/scripts/ai-fix.mjs
@@ -52,7 +52,7 @@ jobs:
 
             **Issue:** ${{ github.event.issue.title }}
 
-            **Changes:** AI-generated search/replace patch using DeepSeek, based on the issue description and VB6 coding standards.
+            **Changes:** AI-generated search/replace patch using Claude (Anthropic), based on the issue description and VB6 coding standards.
 
             > Review carefully before merging.
           labels: ai-generated

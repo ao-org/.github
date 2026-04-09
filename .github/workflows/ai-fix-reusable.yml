@@ -41,6 +41,7 @@ jobs:
         run: node _assets/tools/ai_auto_pr_fix/scripts/ai-fix.mjs
 
       - name: Create Pull Request
+        id: create-pr
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -56,3 +57,10 @@ jobs:
 
             > Review carefully before merging.
           labels: ai-generated
+
+      - name: Trigger Jenkins build
+        if: steps.create-pr.outputs.pull-request-number
+        env:
+          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+        run: |
+          gh pr comment ${{ steps.create-pr.outputs.pull-request-number }} --body "ok to test"

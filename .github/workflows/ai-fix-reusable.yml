@@ -63,4 +63,4 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
-          gh pr comment ${{ steps.create-pr.outputs.pull-request-number }} --body "ok to test"
+          gh pr comment ${{ steps.create-pr.outputs.pull-request-number }} --body "run build"

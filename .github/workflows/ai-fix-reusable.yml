@@ -61,6 +61,6 @@ jobs:
       - name: Trigger Jenkins build
         if: steps.create-pr.outputs.pull-request-number
         env:
-          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh pr comment ${{ steps.create-pr.outputs.pull-request-number }} --body "ok to test"
